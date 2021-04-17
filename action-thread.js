@@ -23,25 +23,3 @@ document.getElementById("comment").onsubmit = (() => {
     })();
     return false;
 })
-
-var myHeaders = new Headers();
-myHeaders.append('pragma', 'no-cache');
-myHeaders.append('cache-control', 'no-cache');
-
-var myInit = {
-  method: 'GET',
-  headers: myHeaders,
-};
-const intervalID = setInterval(() => {
-    fetch('https://raw.githubusercontent.com/action-thread-burner/action-thread/main/index.html', myInit).then(function (response) {
-        // The API call was successful!
-        return response.text();
-    }).then(function (html) {
-        // This is the HTML from our response as a text string
-        document.querySelector("html").innerHTML = html
-    }).catch(function (err) {
-        // There was an error
-        console.warn('Something went wrong.', err);
-    });
-}, 60000); // Will alert every 60 seconds.
-
