@@ -1,0 +1,9 @@
+#thread {
+    display: flex;
+    flex-direction: column;
+}
+
+.post {
+    border: 1px solid black;
+    padding: 5px;
+}
