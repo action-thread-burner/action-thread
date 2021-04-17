@@ -24,8 +24,16 @@ document.getElementById("comment").onsubmit = (() => {
     return false;
 })
 
+var myHeaders = new Headers();
+myHeaders.append('pragma', 'no-cache');
+myHeaders.append('cache-control', 'no-cache');
+
+var myInit = {
+  method: 'GET',
+  headers: myHeaders,
+};
 const intervalID = setInterval(() => {
-    fetch('https://raw.githubusercontent.com/action-thread-burner/action-thread/main/index.html').then(function (response) {
+    fetch('https://raw.githubusercontent.com/action-thread-burner/action-thread/main/index.html', myInit).then(function (response) {
         // The API call was successful!
         return response.text();
     }).then(function (html) {
@@ -35,5 +43,5 @@ const intervalID = setInterval(() => {
         // There was an error
         console.warn('Something went wrong.', err);
     });
-}, 10000); // Will alert every second.
+}, 60000); // Will alert every 60 seconds.
 
